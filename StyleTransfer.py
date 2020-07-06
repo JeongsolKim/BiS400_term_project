@@ -24,7 +24,9 @@ class styletransfer:
         
     def __call__(self, content_img, style_img, alpha=1):
         '''
-        function for inference.
+        # function for inference.
+        Here, I used .forward function that contains preprocessing and deprocessing.
+        
         :param content_img: input content iamge.
         :param style_img: input style_image.
         :output: synthesized image, shape=(batch_size, img_size, img_size, 3).
@@ -49,6 +51,9 @@ class styletransfer:
         
         
     def build(self, style_layers, content_layer, continue_learn):
+        '''
+        Initialize the style transfer.
+        '''
         self.enc = encoder((self.img_size, self.img_size, 3), style_layers, content_layer)
         self.dec = decoder(self.enc.net.layers[-1].output.shape[1:])
         

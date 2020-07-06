@@ -49,13 +49,21 @@ class decoder:
         # 2D convolution
         x_temp = tf.keras.layers.Conv2D(out_channel, (kernel_size, kernel_size), (1, 1), padding='valid', use_bias=use_bias)(x_temp)
         
-        # Relu if use relu
+        # LeakyRelu if use relu
+        '''
+        When I used the Relu, the output was black image,
+        because Relu deactivates all pixels for some reasons.
+        So, I changed it to LeakyReLU.
+        '''
         if use_relu:
             x_temp = tf.keras.layers.LeakyReLU()(x_temp)
            
         return x_temp
     
     def forward(self, inputs):
+        '''
+        This is for inference phase.
+        '''
         outputs = self.net(inputs)
         deprocessed_outputs = utils.deprocessing(outputs)
         

@@ -33,6 +33,9 @@ class encoder:
     
     
     def forward(self, inputs):
+        '''
+        This is for inference phase.
+        '''
         processed_inputs = utils.preprocessing(inputs)
         
         return self.net(processed_inputs)

@@ -27,6 +27,13 @@ class batchgenerator:
         self.style_img_names = [name for name in listdir(self.data_dir+'style') if isfile(join(self.data_dir+'style', name))]
     
     def one_test_img(self, style_or_content, name='', crop=True):
+        '''
+        # load one image files (.jpg or .png) from the folder & return it. (for inference)
+        
+        :param style_or_content: string. if style, load style image and if content, load content image
+        :param name: string. Choose a specific image file with its file name.
+        :param crop: bool. if True, return the randomly cropped image. 
+        '''
         
         if name.endswith('.jpg') or name.endswith('.png'): file_name = name
         elif name != '': file_name =  name + '.jpg'
