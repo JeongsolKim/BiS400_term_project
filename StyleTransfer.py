@@ -59,8 +59,8 @@ class styletransfer:
         
         if continue_learn:
             try:
-                self.dec.net.load_weights(self.load_ckp_dir + '/decoder_ckpt')
-                print(self.load_ckp_dir+'/decoder_ckpt'+' is loaded.')
+                self.dec.net.load_weights(self.load_ckp_dir + '/decoder/decoder_ckpt')
+                print(self.load_ckp_dir+'/decoder/decoder_ckpt'+' is loaded.')
             except:
                 print('No checkpoints found.. Start to train with randomly initialized model.')
         
